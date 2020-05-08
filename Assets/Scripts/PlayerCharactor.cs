@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerCharactor : MonoBehaviour
 {
-    // Start is called before the first frame update
+    int health;
     void Start()
     {
-        
+        health = 5;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetDmg(int dmg)
     {
-        
+        health -= dmg;
+        Debug.Log("Health: " + health);
     }
 }

@@ -13,8 +13,6 @@ public class WanderingAI : MonoBehaviour
 
     float botRadius = 0.75f;
 
-    float angle = Random.Range(-100, 100);
-
     private void Start()
     {
         alive = true;
@@ -33,7 +31,7 @@ public class WanderingAI : MonoBehaviour
                 GameObject hitObject = hit.transform.gameObject;
                 if (hitObject.GetComponent<PlayerCharactor>())
                 {
-                    if (fireball != null)
+                    if (fireball == null)
                     {
                         fireball = Instantiate(fireballPrefab) as GameObject;
                         fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
@@ -41,8 +39,9 @@ public class WanderingAI : MonoBehaviour
                     }
                 }
 
-                if (hit.distance <= obstacleRange)
+                else if (hit.distance <= obstacleRange)
                 {
+                    float angle = Random.Range(-100, 100);
                     transform.Rotate(0, angle, 0);
                 }
             }
